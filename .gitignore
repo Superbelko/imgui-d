@@ -1,0 +1,16 @@
+.dub
+docs.json
+__dummy.html
+docs/
+imguid.so
+imguid.dylib
+imguid.dll
+imguid.a
+imguid.lib
+imguid-test-*
+*.exe
+*.o
+*.obj
+*.lst
+dub.selections.*
+.vscode

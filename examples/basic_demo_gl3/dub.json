@@ -1,0 +1,32 @@
+{
+	"name": "basic_demo_gl3",
+	"description": "Ported version of Dear ImGui C++ example using GLFW & Derelict OpenGL3",
+	
+	"dependencies": {
+		"imgui-d": {"path": "../../"},
+
+		"derelict-glfw3": "~>3.0",
+		"derelict-gl3": "~>1.0.0"
+	},
+
+	"configurations": [
+		{
+			"name": "default-x86",
+			"platforms": ["x86"],
+			"lflags-windows": [
+				"/LIBPATH:bin-x86"
+			],
+			"targetPath": "bin-x86",
+			"workingDirectory": "bin-x86"
+		}
+	],
+
+	"lflags-windows": [
+		"/LIBPATH:bin"
+	],
+
+	"targetPath": "bin",
+	"targetType": "executable",
+	"workingDirectory": "bin",
+	"libs": ["imgui"]
+}

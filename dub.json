@@ -1,0 +1,8 @@
+{
+	"name": "imgui-d",	
+	"description": "Dear ImGui C++ bindings.",
+	"license": "MIT",
+
+	"targetName": "imguid",
+	"targetType": "sourceLibrary"
+}

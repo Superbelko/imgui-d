@@ -1,0 +1,14 @@
+.dub
+docs.json
+__dummy.html
+docs/
+basic_demo_gl3.so
+basic_demo_gl3.dylib
+basic_demo_gl3.dll
+basic_demo_gl3.a
+basic_demo_gl3.lib
+basic_demo_gl3-test-*
+*.exe
+*.o
+*.obj
+*.lst
