@@ -1,6 +1,6 @@
 module gl3_impl;
 
-import derelict.opengl3.gl3;
+import bindbc.opengl;
 
 import imgui;
 
@@ -45,7 +45,7 @@ void ImGui_ImplOpengl3_RenderDrawData(ImDrawData* draw_data)
 	GLint last_sampler; glGetIntegerv(GL_SAMPLER_BINDING, &last_sampler);
 	GLint last_array_buffer; glGetIntegerv(GL_ARRAY_BUFFER_BINDING, &last_array_buffer);
 	GLint last_vertex_array; glGetIntegerv(GL_VERTEX_ARRAY_BINDING, &last_vertex_array);
-	//GLint last_polygon_mode[2]; glGetIntegerv(GL_POLYGON_MODE, last_polygon_mode.ptr);
+	GLint[2] last_polygon_mode; glGetIntegerv(GL_POLYGON_MODE, last_polygon_mode.ptr);
 	GLint[4] last_viewport; glGetIntegerv(GL_VIEWPORT, last_viewport.ptr);
 	GLint[4] last_scissor_box; glGetIntegerv(GL_SCISSOR_BOX, last_scissor_box.ptr);
 	GLenum last_blend_src_rgb; glGetIntegerv(GL_BLEND_SRC_RGB, cast(GLint*)&last_blend_src_rgb);
@@ -130,7 +130,7 @@ void ImGui_ImplOpengl3_RenderDrawData(ImDrawData* draw_data)
 					glScissor(cast(int)clip_rect.x, cast(int)(fb_height - clip_rect.w), cast(int)(clip_rect.z - clip_rect.x), cast(int)(clip_rect.w - clip_rect.y));
 
 					// Bind texture, Draw
-					glBindTexture(GL_TEXTURE_2D, cast(GLuint)cast(intptr_t)pcmd.TextureId);
+					glBindTexture(GL_TEXTURE_2D, cast(GLuint)cast(void*)pcmd.TextureId);
 					glDrawElements(GL_TRIANGLES, cast(GLsizei)pcmd.ElemCount, ImDrawIdx.sizeof == 2 ? GL_UNSIGNED_SHORT : GL_UNSIGNED_INT, cast(void*)idx_buffer_offset);
 				}
 			}
@@ -152,9 +152,7 @@ void ImGui_ImplOpengl3_RenderDrawData(ImDrawData* draw_data)
 	if (last_enable_cull_face) glEnable(GL_CULL_FACE); else glDisable(GL_CULL_FACE);
 	if (last_enable_depth_test) glEnable(GL_DEPTH_TEST); else glDisable(GL_DEPTH_TEST);
 	if (last_enable_scissor_test) glEnable(GL_SCISSOR_TEST); else glDisable(GL_SCISSOR_TEST);
-pragma(msg, "FIX ME: ", __FILE__, ":", __LINE__+1, );
-    // commented out, latest derelict-gl3 versions doesn't seems to include such deprecated functions by default
-	//glPolygonMode(GL_FRONT_AND_BACK, cast(GLenum)last_polygon_mode[0]);  
+	glPolygonMode(GL_FRONT_AND_BACK, cast(GLenum)last_polygon_mode[0]);
 	glViewport(last_viewport[0], last_viewport[1], cast(GLsizei)last_viewport[2], cast(GLsizei)last_viewport[3]);
 	glScissor(last_scissor_box[0], last_scissor_box[1], cast(GLsizei)last_scissor_box[2], cast(GLsizei)last_scissor_box[3]);
 }

@@ -2,8 +2,8 @@ import core.stdc.float_;
 import core.stdc.stdlib;
 import std.stdio;
 
-import derelict.opengl3.gl3;
-import derelict.glfw3.glfw3;
+import bindbc.opengl;
+import bindbc.glfw;
 import imgui;
 
 import glfw_impl;
@@ -18,8 +18,8 @@ extern(C) static nothrow void glfw_error_callback(int error, const char* descrip
 
 void main()
 {
-	DerelictGL3.load();
-	DerelictGLFW3.load();
+	GLFWSupport glfwSupport = loadGLFW();
+	assert(glfwSupport);
 
 	// Setup window
 	glfwSetErrorCallback(&glfw_error_callback);
@@ -34,10 +34,14 @@ void main()
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1); // Enable vsync
 
-	DerelictGL3.reload();
+	GLSupport glLevel = loadOpenGL();
+	assert(glLevel >= GLSupport.gl32);
 
 
-	IMGUI_CHECKVERSION();
+	// unfortunately gentool doesn't handles this macro yet
+	// so for now blindly accept any library version
+	//IMGUI_CHECKVERSION();
+
 	ImGui.CreateContext();
 	ImGuiIO* io = &ImGui.GetIO();
 	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;  // Enable Keyboard Controls
@@ -58,9 +62,9 @@ void main()
 	style.ScaleAllSizes(2f);
 
 	ImFontConfig cfg;
-	float scale = 2.0f;
-	cfg.SizePixels = 13f * scale;
-	io.Fonts.AddFontDefault(&cfg).DisplayOffset.y = scale;
+	float fontscale = 2.0f;
+	cfg.SizePixels = 13f * fontscale;
+	io.Fonts.AddFontDefault(&cfg).DisplayOffset.y = fontscale;
 	*/
 	// ----------------
 

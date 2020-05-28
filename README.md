@@ -6,6 +6,8 @@ Contains types & functions, with minimal amount of helper functions, one example
 
 ## Build and Usage
 
+> **NOTE: imgui_base.d is no longer maintained as it can be generated using gentool**
+
 This is simply a bindings, it has no external dependencies. However to use in your code compiled imgui library is needed. There is simple CMake config included that simpifies the process.
 
 Inside your project's dub.json just add this to dependencies section *(assuming imgui-d is added as a submodule)*, and import/static library as well.
@@ -57,4 +59,6 @@ Simply a bindings to imgui library. "Dear ImGui" is immediate-mode graphics API 
 
 ## How it is done?
 
-Right now it is semi-automatic process of copy-paste & regex replace with manual tweaks, there is also a simple script for extracting correct mangling for types that cannot be expressed in D and that have different mangling than their equivalents(like float[] is simply a float*), most of this is specific to Visual Studio C++ compiler.
+Originally it was semi-auto regex replace, but now it can be generated using my ```gentool``` binding generator.
+
+Other than that it might be necessary to extract correct mangling for types that cannot be expressed in D *(such as head const types - i.e. ```float* const```, which is const pointer to mutable data and this doesn't makes sense in D)*, most of this is specific to Visual Studio C++ compiler.

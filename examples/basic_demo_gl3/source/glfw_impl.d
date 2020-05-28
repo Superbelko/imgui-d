@@ -3,9 +3,10 @@ module glfw_impl;
 import core.stdc.string;
 import std.string;
 
-import derelict.glfw3.glfw3;
+import bindbc.glfw;
 
 import imgui;
+import core.stdc.float_;
 
 static GLFWwindow*      g_Window = null;
 //static GlfwClientApi    g_ClientApi = GlfwClientApi_Unknown;
