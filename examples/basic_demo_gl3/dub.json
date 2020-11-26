@@ -14,10 +14,13 @@
 	},
 	"versions": ["GLFW_33", "GL_46"],
 	"libs": [
-		"imgui"
+		"imgui",
 	],
 	"lflags-windows": [
-		"/LIBPATH:bin"
+		"/LIBPATH:bin",
+		"/NODEFAULTLIB:libcmt",
+		"/NODEFAULTLIB:libvcruntime",
+		"/NODEFAULTLIB:libucrt"
 	],
 	"configurations": [
 		{
