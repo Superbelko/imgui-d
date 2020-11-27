@@ -12,3 +12,6 @@ basic_demo_gl3-test-*
 *.o
 *.obj
 *.lst
+/deps
+/bin
+/bin-x86

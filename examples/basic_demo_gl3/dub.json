@@ -35,7 +35,10 @@
 		},
 		{
 			"name": "x64",
-			"platforms": ["x86_64"]
+			"platforms": ["x86_64"],
+			"preBuildCommands": [
+				"cd scripts && powershell ./getdeps.ps1"
+			]
 		}
 	]
 }
