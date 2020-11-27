@@ -4,9 +4,18 @@ D language bindings to C++ [Dear ImGui](https://github.com/ocornut/imgui) librar
 
 Contains types & functions, with minimal amount of helper functions, one example is work around for inability to provide default values for **ref** parameters.
 
+## Demo
+There is ported official imgui OpenGL 3 demo that can be found in examples/basic_demo_gl3 folder.
+
+You can build it using dub, it has pre-build step that downloads necessary stuff for you. (only Windows x64 builds is currently supported)
+
+    cd examples/basic_demo_gl3
+    dub build
+
+
 ## Build and Usage
 
-> **NOTE: imgui_base.d is no longer maintained as it can be generated using gentool**
+> **NOTE: imgui_base.d is no longer maintained as it can be generated using my binding generator called [gentool](https://github.com/Superbelko/ohmygentool)**
 
 This is simply a bindings, it has no external dependencies. However to use in your code compiled imgui library is needed. There is simple CMake config included that simpifies the process.
 

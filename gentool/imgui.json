@@ -1,13 +1,12 @@
 {
     "$schema": "https://raw.githubusercontent.com/Superbelko/ohmygentool/master/config-schema.json",
     "version": 1,
+	
     "input": {
         "std": "c++14",
-        "paths": ["F:/cpp/imgui/imgui.h"],
+        "paths": ["imgui.h"],
         "includes": [
-            "F:/prog/cpp/imgui", 
-            "F:/cpp/llvm-x64-build/Debug/lib/clang/7.0.0/include",
-            "F:/cpp/libcxx/include"
+            "./"
         ],
         "system": [
             //"C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.15.26726/include",
@@ -28,8 +27,9 @@
         ],
         "cflags": []
     },
+	
     "output": {
-        "path": "imgui_gen.d",
+        "path": "imgui_base.d",
         "target": "dlang",
         "attr-nogc": false
     }
