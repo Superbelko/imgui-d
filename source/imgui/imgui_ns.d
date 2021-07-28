@@ -238,8 +238,8 @@ extern(C++, ImGui) nothrow {
     bool          DragScalarN(const(char)* label, ImGuiDataType data_type, void* v, int components, float v_speed, const void* v_min = null, const void* v_max = null, const(char)* format = null, float power = 1.0f);
 
     // Widgets: Input with Keyboard
-    bool          InputText(const(char)* label, char* buf, size_t buf_size, ImGuiInputTextFlags flags = 0, ImGuiTextEditCallback callback = null, void* user_data = null);
-    bool          InputTextMultiline(const(char)* label, char* buf, size_t buf_size, const ref ImVec2 size = ImVec2(0,0).byRef, ImGuiInputTextFlags flags = 0, ImGuiTextEditCallback callback = null, void* user_data = null);
+    bool          InputText(const(char)* label, char* buf, size_t buf_size, ImGuiInputTextFlags flags = 0, ImGuiInputTextCallback callback = null, void* user_data = null);
+    bool          InputTextMultiline(const(char)* label, char* buf, size_t buf_size, const ref ImVec2 size = ImVec2(0,0).byRef, ImGuiInputTextFlags flags = 0, ImGuiInputTextCallback callback = null, void* user_data = null);
     bool          InputFloat(const(char)* label, float* v, float step = 0.0f, float step_fast = 0.0f, const(char)* format = "%.3f", ImGuiInputTextFlags extra_flags = 0);
     @pyExtract  pragma(mangle, gen.InputFloat2.mangleof )
     bool          InputFloat2(const(char)* label, float* /*const*/ v, const(char)* format = "%.3f", ImGuiInputTextFlags extra_flags = 0);

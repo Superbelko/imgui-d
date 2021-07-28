@@ -54,18 +54,20 @@ void main()
 	ImGui.StyleColorsDark();
 	//ImGui.StyleColorsClassic();
 
-	// this scaling code is not the part of orignal tutorial
-	// but I consider this useful so I keep it there for now
-	// ---- DPI SCALE 2x
-	/*
-	auto style = &ImGui.GetStyle();
-	style.ScaleAllSizes(2f);
+	version(none)
+	{
+		// this scaling code is not the part of orignal tutorial
+		// but I consider this useful so I keep it there for now
+		const DPI_SCALE = 1.5; // should be DPI/96 on Windows, so basically on my 4K display 144ppi/96 = 1.5
+		auto style = &ImGui.GetStyle();
+		style.ScaleAllSizes(DPI_SCALE);
 
-	ImFontConfig cfg;
-	float fontscale = 2.0f;
-	cfg.SizePixels = 13f * fontscale;
-	io.Fonts.AddFontDefault(&cfg).DisplayOffset.y = fontscale;
-	*/
+		ImFontConfig cfg;
+		cfg._default_ctor();
+		cfg.SizePixels = 13 * DPI_SCALE; // default font size is 13
+		//io.FontGlobalScale = 2; // blurry, meh
+		io.Fonts.AddFontDefault(&cfg);
+	}
 	// ----------------
 
 	// Load Fonts

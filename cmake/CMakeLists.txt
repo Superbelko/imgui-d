@@ -7,9 +7,11 @@ set(STB_HEADERS imstb_truetype.h imstb_textedit.h imstb_rectpack.h)
 set(SOURCE_FNTCOMPRESS misc/fonts/binary_to_compressed_c.cpp)
 
 set(HEADER_FILES ${STB_HEADERS} imgui.h imgui_internal.h imconfig.h)
-set(SOURCE_FILES imgui.cpp imgui_draw.cpp imgui_demo.cpp)
+set(SOURCE_FILES imgui.cpp imgui_draw.cpp imgui_demo.cpp imgui_widgets.cpp imgui_tables.cpp)
 
 add_library(imgui ${HEADER_FILES} ${SOURCE_FILES})
 
 # enable PIC for linux by default
 set_target_properties(imgui PROPERTIES POSITION_INDEPENDENT_CODE ON)
+# exports symbols on Windows when building DLL
+set_target_properties(imgui PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
