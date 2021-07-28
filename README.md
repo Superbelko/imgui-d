@@ -12,6 +12,12 @@ You can build it using dub, it has pre-build step that downloads necessary stuff
     cd examples/basic_demo_gl3
     dub build
 
+> NOTE: depending on imgui build static vs dynamic version you might hit link error complaining about  "ImGuiTextBuffer::EmptyString", gentool have no idea how to handle statics from contexts, so when you link static imgui builds you have to edit __imgui_base.d__ file in struct `ImGuiTextBuffer`
+and replace  
+`__gshared static public char[1] EmptyString;`  
+with  
+`__gshared static extern char[1] EmptyString;`  
+(notice that `public` becomes `extern`) 
 
 ## Build and Usage
 
